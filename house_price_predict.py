@@ -9,6 +9,7 @@ from sklearn.linear_model import LinearRegression
 import scipy.stats as stats
 import matplotlib.pyplot as plt
 import sklearn
+from sklearn.metrics import r2_score
 # special matplotlib argument for improved plots
 from matplotlib import rcParams
 
@@ -17,8 +18,6 @@ from matplotlib import rcParams
 
 
 #%%
-#https://www.kaggle.com/c/boston-housing
-
 # Let's load data
 
 boston = load_boston()
@@ -32,15 +31,12 @@ print(boston.keys())
 # Display column names
 print(boston.DESCR)
 
-
 #%%
 data = pd.DataFrame(boston.data)
 data.columns = boston.feature_names
 data['PRICE'] = boston.target
 
 print(data.head())
-
-
 
 #%%
 
@@ -76,7 +72,17 @@ mse = sklearn.metrics.mean_squared_error(Y_test, Y_pred)
 print(mse)
 
 #%%
-from sklearn.metrics import r2_score
+
 r2_score(Y_test, Y_pred)
+
+#%%
+
+index = 0
+results = lm.predict([X_test.loc[index]])
+print("predicted price",results[0])
+
+print("Actual price ",Y_test.loc[index])
+#%%
+X_test.keys
 
 #%%
