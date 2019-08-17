@@ -63,9 +63,9 @@ lm.fit(X_train, Y_train)
 Y_pred = lm.predict(X_test)
 
 plt.scatter(Y_test, Y_pred)
-plt.xlabel("Prices: $Y_i$")
-plt.ylabel("Predicted prices: $\hat{Y}_i$")
-plt.title("Prices vs Predicted prices: $Y_i$ vs $\hat{Y}_i$")
+plt.xlabel("Prices")
+plt.ylabel("Predicted prices")
+plt.title("Prices vs Predicted prices")
 
 #%%
 mse = sklearn.metrics.mean_squared_error(Y_test, Y_pred)
