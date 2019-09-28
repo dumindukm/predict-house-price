@@ -80,9 +80,6 @@ Y_pred = lm.predict(X_test)
 
 PlotResultsUsingScattePlot(Y_test, Y_pred)
 
-print('X_test')
-print(X_test.iloc[1])
-
 #%%
 def EvalateModel(y_test, y_pred):
     mse = sklearn.metrics.mean_squared_error(y_test, y_pred)
@@ -118,8 +115,18 @@ DoPredictFromTestset(2,lm,X_test[min_features], Y_test)
 DoPredictFromTestset(3,lm,X_test[min_features], Y_test)
 #%%
 
+# Let's predict using DeciosnTree
+print("****** Start train using DecisionTreeRegressor ******")
+from sklearn.tree import DecisionTreeRegressor
+regressor = DecisionTreeRegressor(random_state=0)
 
+regressor.fit(X_train, Y_train)
 
+Y_pred = regressor.predict(X_test)
+EvalateModel(Y_test, Y_pred)
+DoPredictFromTestset(1,regressor,X_test, Y_test)
+DoPredictFromTestset(2,regressor,X_test, Y_test)
+DoPredictFromTestset(3,regressor,X_test, Y_test)
 #%%
 
 
