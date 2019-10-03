@@ -68,17 +68,19 @@ def TrainUsingLineearRegression(x,y):
     lm.fit(x, y)
     return lm
 
-def PlotResultsUsingScattePlot(y_test, y_pred):
+def PlotResultsUsingScattePlot(y_test, y_pred,graph_title):
+    plt.figure()
     plt.scatter(y_test, y_pred)
     plt.xlabel("Prices")
     plt.ylabel("Predicted prices")
-    plt.title("Prices vs Predicted prices (Linear regression)")
+    plt.title(graph_title)
+    
 
 lm = TrainUsingLineearRegression(X_train, Y_train)
 # do prediction using Linear regression
 Y_pred = lm.predict(X_test)
 
-PlotResultsUsingScattePlot(Y_test, Y_pred)
+PlotResultsUsingScattePlot(Y_test, Y_pred,"Prices vs Predicted prices (Linear regression)")
 
 #%%
 def EvalateModel(y_test, y_pred):
@@ -106,7 +108,7 @@ lm = TrainUsingLineearRegression(X_train[min_features], Y_train)
 # do prediction using Linear regression
 Y_pred = lm.predict(X_test[min_features])
 
-PlotResultsUsingScattePlot(Y_test, Y_pred)
+PlotResultsUsingScattePlot(Y_test, Y_pred,"Prices vs Predicted prices (Linear regression few features)")
 print('***** predict results using few features ******')
 
 EvalateModel(Y_test, Y_pred)
@@ -124,10 +126,11 @@ regressor.fit(X_train, Y_train)
 
 Y_pred = regressor.predict(X_test)
 EvalateModel(Y_test, Y_pred)
+PlotResultsUsingScattePlot(Y_test, Y_pred,"Prices vs Predicted prices (Decisiontree regression)")
 DoPredictFromTestset(1,regressor,X_test, Y_test)
 DoPredictFromTestset(2,regressor,X_test, Y_test)
 DoPredictFromTestset(3,regressor,X_test, Y_test)
 #%%
-
+plt.show()
 
 #%%
